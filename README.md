@@ -47,6 +47,7 @@ I mainly run [EndeavourOS](https://endeavouros.com/) with [niri](https://github.
 I dual boot Linux and Windows 11 (Windows originally preinstalled). I only use it for Windows specific tasks, since my hardware can't handle running it in a VM. The specific apps I use don't really matter because they're mostly the same as on Linux, so here's just a list of things I found to make Windows 11 tolerable (subjective).
 
 ### Windows specific software I use
+- [AltSnap](https://github.com/RamonUnch/AltSnap) - move window anywhere (not just titlebar) by holding alt key
 - [BCUninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) - uninstall software
 - [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) - bring back Windows 10 taskbar, context menu, etc (not sure if this still work in newer version)
 - [PowerToys](https://github.com/microsoft/PowerToys) - application launcher, color picker, text extractor, and more goodies in one app
