@@ -7,16 +7,18 @@ My personal configuration file and list of software I use in case my system bork
 I mainly run [EndeavourOS](https://endeavouros.com/) with [niri](https://github.com/YaLTeR/niri) and [noctalia-shell](https://github.com/noctalia-dev/noctalia-shell) as my primary setup. I keep [KDE Plasma](https://kde.org/plasma-desktop/) installed as a backup environment.
 
 ### Software I use
-- Application launcher: [Vicinae](https://github.com/vicinaehq/vicinae)
-- Polkit: [polkit-kde-agent](https://archlinux.org/packages/extra/x86_64/polkit-kde-agent/)
-- Theme & Stuff:
+- System & Important stuff
     - [Atkinson Hyperlegible Next](https://aur.archlinux.org/packages/otf-atkinson-hyperlegible-next) + [JetBrains Mono Nerd](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd/) + [FiraCode Nerd](https://archlinux.org/packages/extra/any/ttf-firacode-nerd/) - fonts
+    - [Dolphin](https://apps.kde.org/dolphin/) - file manager
+    - [Kitty](https://github.com/kovidgoyal/kitty) - terminal emulator
+    - [nwg-look](https://github.com/nwg-piotr/nwg-look) - for GTK
+    - [polkit-kde-agent](https://archlinux.org/packages/extra/x86_64/polkit-kde-agent/) - polkit
     - [Posy Cursor (Linux)](https://github.com/simtrami/posy-improved-cursor-linux) - cursor
     - [qt6ct-kde](https://aur.archlinux.org/packages/qt6ct-kde) - for qt6ct + patched to work with Dolpin and other KDE apps.
-    - [nwg-look](https://github.com/nwg-piotr/nwg-look) - for GTK
+    - [swayidle](https://github.com/swaywm/swayidle) - idle management
+    - [Vicinae](https://github.com/vicinaehq/vicinae) - application launcher
 - Apps
     - [Clock (KDE)](https://flathub.org/en/apps/org.kde.kclock) - timer app
-    - [Dolphin](https://apps.kde.org/dolphin/) - file manager
     - [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) - manage flatpak softwares
     - [Gradia](https://flathub.org/en/apps/be.alexandervanhee.gradia) - image/screenshot editing
     - [Gwenview](https://apps.kde.org/gwenview/) - image viewer
@@ -24,7 +26,6 @@ I mainly run [EndeavourOS](https://endeavouros.com/) with [niri](https://github.
     - [Obsidian](https://flathub.org/en/apps/md.obsidian.Obsidian) - note taking with markdown
     - [OBS Studio](https://github.com/obsproject/obs-studio) - video recording
     - [ONLYOFFICE](https://flathub.org/en/apps/org.onlyoffice.desktopeditors) - office suite
-    - [Kitty](https://github.com/kovidgoyal/kitty) - terminal emulator
     - [PCSX2](https://flathub.org/en/apps/net.pcsx2.PCSX2) - playstation 2 emulator
     - [PDF Tricks](https://flathub.org/en/apps/com.github.muriloventuroso.pdftricks) - pdf operation
     - [QDirStat](https://github.com/shundhammer/qdirstat) - disk space analyzer

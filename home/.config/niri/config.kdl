@@ -111,7 +111,8 @@ output "eDP-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    //gaps 16
+    gaps 8
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -274,11 +275,12 @@ spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 spawn-sh-at-startup "qs -c noctalia-shell"
 spawn-sh-at-startup "vicinae server"
+spawn-sh-at-startup "swayidle -w timeout 300 'qs -c noctalia-shell ipc call lockScreen lock && systemctl suspend' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    skip-at-startup
+    //skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -305,6 +307,7 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+    slowdown 0.75
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -375,8 +378,10 @@ binds {
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: noctalia-lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Alt+F4 hotkey-overlay-title="Open noctalia Session menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+Slash hotkey-overlay-title="Open noctalia Settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
-    Mod+Shift+T hotkey-overlay-title="Extract text (OCR)" { spawn-sh "~/.config/niri/scripts/ocr.sh"; }
-    Mod+ALt+S hotkey-overlay-title="Annotate last image in clipboard using satty" { spawn-sh "wl-paste --list-types | grep -q 'image/' && wl-paste --no-newline | satty -f - --copy-command=wl-copy --output-filename='~/Pictures/satty/$(date +%Y%m%d%H%M%S).png'"; }
+    Mod+Alt+W hotkey-overlay-title="Open noctalia Wallpaper selector" { spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
+    Mod+Shift+T hotkey-overlay-title="Extract text (OCR)" { spawn "~/.local/bin/niri-ocr.sh"; }
+    Mod+ALt+S hotkey-overlay-title="Annotate last image in clipboard using satty" { spawn-sh "wl-paste --list-types | grep -q 'image/' && wl-paste --no-newline | flatpak run be.alexandervanhee.gradia"; }
+    Mod+P repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -572,6 +577,7 @@ binds {
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
+    Mod+Alt+F { maximize-window-to-edges; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
@@ -637,6 +643,16 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 }
 
+gestures {
+    hot-corners {
+        // off
+        top-left
+        // top-right
+        // bottom-left
+        // bottom-right
+    }
+}
+
 window-rule {
   match app-id=r"org.kde.kdeconnect.daemon" // ID of presentation pointer overlay
   open-floating true
@@ -645,7 +661,7 @@ window-rule {
 
   // Adjust these to your monitor's resolution
   min-width 1920
-  min-height 1080  
+  min-height 1080
 
   // Optionally customize opacity of pointer
   // opacity 1.0
@@ -664,6 +680,25 @@ window-rule {
   draw-border-with-background false
 }
 
+// Desktop gremlin thing
+window-rule {
+  match title="ilgwg_desktop_gremlins.py"
+  draw-border-with-background false
+  open-floating true
+
+  opacity 0.99
+
+  focus-ring {
+      off
+  }
+  border {
+      // Same as focus-ring.
+  }
+  shadow {
+      off
+  }
+}
+
 layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
@@ -678,3 +713,5 @@ environment {
   QT_QPA_PLATFORMTHEME "qt6ct"
   XDG_MENU_PREFIX "arch-"
 }
+
+include "./noctalia.kdl"

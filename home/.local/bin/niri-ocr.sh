@@ -1,9 +1,8 @@
 #!/bin/bash
 
-LANG_CODE="eng"
-#LANG_CODE="eng+ind+tgl"
+LANG_CODE="eng+ind"
 
-REGION=$(slurp)
+REGION=$(slurp -b '#00000050' -c '#FFFFFF')
 
 if [ -z "$REGION" ]; then
     exit 0
